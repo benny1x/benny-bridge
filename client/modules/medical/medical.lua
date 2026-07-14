@@ -1,0 +1,11 @@
+RegisterNetEvent('benny-bridge:client:medical:nativeRevive', function()
+    local m_Ped = PlayerPedId()
+    local m_Coords = GetEntityCoords(m_Ped)
+    local m_Heading = GetEntityHeading(m_Ped)
+
+    NetworkResurrectLocalPlayer(m_Coords.x, m_Coords.y, m_Coords.z, m_Heading, true, false)
+    SetEntityHealth(m_Ped, 200)
+    ClearPedBloodDamage(m_Ped)
+    SetPlayerInvincible(PlayerId(), false)
+    ClearPedTasksImmediately(m_Ped)
+end)
