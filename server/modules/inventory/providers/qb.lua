@@ -74,4 +74,8 @@ function m_Provider.mOpenShop(m_Source, m_ShopName, _m_Payload)
     return m_Ok
 end
 
+function m_Provider.mOpenPlayerInventory(_m_Source, _m_Target)
+    return 'client'
+end
+
 BennyBridge.InventoryProviders.qb = m_Provider

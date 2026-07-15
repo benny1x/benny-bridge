@@ -33,4 +33,8 @@ function m_Provider.mOpenShop(_m_Source, _m_ShopName, _m_Payload)
     return false
 end
 
+function m_Provider.mOpenPlayerInventory(_m_Source, _m_Target)
+    return false
+end
+
 BennyBridge.InventoryProviders.none = m_Provider

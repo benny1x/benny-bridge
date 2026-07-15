@@ -78,4 +78,11 @@ function m_Provider.mOpenShop(_m_Source, _m_ShopName, _m_Payload)
     return 'client'
 end
 
+function m_Provider.mOpenPlayerInventory(m_Source, m_Target)
+    local m_Ok = pcall(function()
+        exports.ox_inventory:forceOpenInventory(m_Source, 'player', m_Target)
+    end)
+    return m_Ok
+end
+
 BennyBridge.InventoryProviders.ox = m_Provider

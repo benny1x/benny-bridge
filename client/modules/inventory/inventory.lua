@@ -103,6 +103,41 @@ RegisterNetEvent('benny-bridge:client:openShopFallback', function(m_ShopName, m_
     TriggerServerEvent('benny-bridge:server:buyShopItem', m_ShopName, 1, 1)
 end)
 
+RegisterNetEvent('benny-bridge:client:openPlayerInventory', function(m_InvType, m_Target)
+    m_Target = tonumber(m_Target)
+    if not m_Target then
+        return
+    end
+
+    if m_InvType == 'ox' and m_Started('ox_inventory') then
+        pcall(function()
+            exports.ox_inventory:openInventory('player', m_Target)
+        end)
+        return
+    end
+
+    if m_InvType == 'qs' and m_Started('qs-inventory') then
+        TriggerServerEvent('inventory:server:OpenInventory', 'otherplayer', m_Target)
+        return
+    end
+
+    if (m_InvType == 'qb' or m_InvType == 'lj' or m_InvType == 'ps') then
+        TriggerServerEvent('inventory:server:OpenInventory', 'otherplayer', m_Target)
+        return
+    end
+
+    if m_InvType == 'tgiann' and m_Started('tgiann-inventory') then
+        pcall(function()
+            exports['tgiann-inventory']:OpenInventory('otherplayer', m_Target)
+        end)
+        return
+    end
+
+    if m_InvType == 'codem' then
+        TriggerEvent('codem-inventory:client:robplayer')
+    end
+end)
+
 exports('GetInventory', function()
     return BennyBridge.Inventory.mGetType()
 end)

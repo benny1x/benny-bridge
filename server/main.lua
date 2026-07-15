@@ -80,6 +80,10 @@ m_Export('OpenShop', function(m_Source, m_ShopName, m_Data)
     return BennyBridge.Inventory.mOpenShop(m_Source, m_ShopName, m_Data)
 end)
 
+m_Export('OpenPlayerInventory', function(m_Source, m_Target)
+    return BennyBridge.Inventory.mOpenPlayerInventory(m_Source, m_Target)
+end)
+
 m_Export('GetShop', function(m_ShopName)
     return BennyBridge.Inventory.mGetShop(m_ShopName)
 end)

@@ -107,6 +107,36 @@ function BennyBridge.Inventory.mCanCarryItem(m_Source, m_Item, m_Count)
     return true
 end
 
+--- Open another player's inventory (looting / searching).
+function BennyBridge.Inventory.mOpenPlayerInventory(m_Source, m_Target)
+    if not m_Source or not m_Target or m_Source == m_Target then
+        return false
+    end
+
+    local m_Provider = m_ResolveProvider()
+    if type(m_Provider.mOpenPlayerInventory) ~= 'function' then
+        TriggerClientEvent('benny-bridge:client:openPlayerInventory', m_Source, m_Type, m_Target)
+        return true
+    end
+
+    local m_Ok, m_Result = pcall(m_Provider.mOpenPlayerInventory, m_Source, m_Target)
+    if not m_Ok then
+        BennyBridge.mDebug('OpenPlayerInventory failed', m_Result)
+        return false
+    end
+
+    if m_Result == true then
+        return true
+    end
+
+    if m_Result == 'client' then
+        TriggerClientEvent('benny-bridge:client:openPlayerInventory', m_Source, m_Type, m_Target)
+        return true
+    end
+
+    return false
+end
+
 CreateThread(function()
     Wait(350)
     m_ResolveProvider()
