@@ -25,6 +25,7 @@ client_scripts({
 
 server_scripts({
     'server/modules/core/utils.lua',
+    'server/modules/core/version.lua',
     'server/modules/framework/providers/esx.lua',
     'server/modules/framework/providers/qb.lua',
     'server/modules/framework/providers/qbx.lua',

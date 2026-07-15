@@ -28,3 +28,7 @@ Config.Medical = {
     CustomReviveExportResource = '', -- e.g. 'my_ambulance'
     CustomReviveExportName = '', -- e.g. 'RevivePlayer'
 }
+
+-- Compare installed Benny Scripts against https://github.com/benny1x/version-repo
+Config.VersionCheck = true
+

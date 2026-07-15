@@ -112,4 +112,12 @@ m_Export('Revive', function(m_Source)
     return BennyBridge.Medical.mRevive(m_Source)
 end)
 
+m_Export('CheckVersion', function(m_Resource, m_FileName)
+    return BennyBridge.Version.Check(m_Resource, m_FileName)
+end)
+
+m_Export('CheckVersions', function()
+    return BennyBridge.Version.CheckAll()
+end)
+
 BennyBridge.mDebug('setup server.')
